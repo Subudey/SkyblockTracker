@@ -63,7 +63,34 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>com.akathist.maven.plugins.launch4j</groupId>
+                <artifactId>launch4j-maven-plugin</artifactId>
+                <version>2.4.1</version>
+                <executions>
+                    <execution>
+                        <id>l4j-clui</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>launch4j</goal>
+                        </goals>
+                        <configuration>
+                            <headerType>gui</headerType>
+                            <outfile>target/SkyblockTracker.exe</outfile>
+                            <jar>target/${project.build.finalName}-jar-with-dependencies.jar</jar>
+                            <errTitle>SkyblockTracker Error</errTitle>
+                            <classPath>
+                                <mainClass>ru.skyblock.tracker.Launcher</mainClass>
+                            </classPath>
+                            <icon>src/main/resources/icon.ico</icon>
+                            <jre>
+                                <minVersion>17.0.0</minVersion>
+                                <path>%JAVA_HOME%;%PATH%</path>
+                            </jre>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
-
 </project>
